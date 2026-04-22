@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El barrio — Gonçalo M. Tavares | Ficha de Lectura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1710;
+    --sienna: #9b3a1e;
+    --rust: #c25c2e;
+    --gold: #b8913a;
+    --sage: #5c7a5e;
+    --fog: #e0d8cc;
+    --muted: #6b6358;
+    --border: #c9bfaf;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    border-bottom: 2px solid var(--sienna);
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0 20px;
+    white-space: nowrap;
+    border-right: 1px solid #333;
+    flex-shrink: 0;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+  }
+  .nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #888;
+    padding: 14px 18px;
+    white-space: nowrap;
+    border-right: 1px solid #2a2920;
+    transition: color .2s, background .2s;
+  }
+  .nav button:hover { color: var(--cream); background: #252318; }
+  .nav button.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
+
+  /* ── WRAPPER ── */
+  .page { display: none; max-width: 1100px; margin: 0 auto; padding: 0 40px 80px; }
+  .page.visible { display: block; }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 28px 0 14px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .masthead-serie {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .masthead-ficha {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 48px;
+    margin-bottom: 64px;
+    align-items: start;
+  }
+  .hero-cat {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--sienna);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 68px);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -.02em;
+    margin-bottom: 14px;
+  }
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--sienna);
+    margin-bottom: 28px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+  }
+  .hero-ornament {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 8px;
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .quote-block {
+    background: var(--ink);
+    padding: 52px 64px 44px;
+    margin: 44px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 140px;
+    line-height: 1;
+    color: var(--sienna);
+    position: absolute;
+    top: -8px;
+    left: 32px;
+    opacity: .6;
+    pointer-events: none;
+    user-select: none;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--cream);
+    position: relative;
+    z-index: 1;
+    padding-left: 28px;
+  }
+  .quote-source {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 24px;
+    padding-left: 28px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    margin: 52px 0 28px;
+  }
+  .section-tag-line {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 10px;
+  }
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--sienna);
+    border: 1px solid var(--sienna);
+    padding: 4px 10px;
+    white-space: nowrap;
+  }
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  /* ── BIO GRID ── */
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 48px;
+    margin-bottom: 32px;
+  }
+  .bio-grid p { line-height: 1.75; }
+  em.hl { font-style: normal; color: var(--sienna); }
+
+  /* ── OBRAS LIST ── */
+  .obras-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0 36px;
+  }
+  .obra-item {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    border: 1px solid var(--border);
+    padding: 5px 14px;
+    color: var(--ink);
+  }
+
+  /* ── INFO CARDS ── */
+  .info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+  }
+  .info-card {
+    background: var(--fog);
+    border-top: 3px solid var(--sienna);
+    padding: 18px 20px 20px;
+  }
+  .info-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .info-card-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  /* ── EJERCICIO BLOCK ── */
+  .ejercicio-block {
+    border-left: 4px solid var(--rust);
+    background: #fff;
+    padding: 26px 32px 24px;
+    margin-bottom: 28px;
+  }
+  .ejercicio-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 8px;
+  }
+  .ejercicio-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+  .ejercicio-block p {
+    margin-bottom: 12px;
+    font-size: 17px;
+  }
+  .ejercicio-block ol, .ejercicio-block ul {
+    margin: 10px 0 14px 22px;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  .ejercicio-block li { margin-bottom: 6px; }
+  .ejercicio-nota {
+    border-top: 1px solid var(--border);
+    margin-top: 18px;
+    padding-top: 14px;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ── PREMISA HEADER ── */
+  .premisa-letra {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--fog);
+    float: left;
+    line-height: .85;
+    margin-right: 12px;
+    margin-top: 4px;
+    user-select: none;
+  }
+
+  /* ── MAXIMA ROW ── */
+  .maximas { margin: 16px 0 36px; }
+  .maxima-row {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .maxima-row:last-child { border-bottom: none; }
+  .maxima-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--sienna);
+    width: 28px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .maxima-text { font-size: 17px; line-height: 1.65; }
+
+  /* ── REF ITEM ── */
+  .refs { margin: 16px 0 36px; }
+  .ref-item {
+    display: grid;
+    grid-template-columns: 12px 1fr;
+    gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .ref-item:last-child { border-bottom: none; }
+  .ref-bullet {
+    width: 8px;
+    height: 8px;
+    background: var(--sienna);
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+  .ref-title { font-style: italic; font-size: 16px; }
+  .ref-author {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin: 3px 0 5px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .ref-nota { font-style: italic; color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: 64px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .page { padding: 0 20px 60px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-ornament { display: none; }
+    .bio-grid { grid-template-columns: 1fr; }
+    .info-cards { grid-template-columns: 1fr 1fr; }
+    .quote-block { padding: 44px 28px 36px; }
+    .quote-mark { font-size: 90px; left: 12px; }
+    .quote-text { padding-left: 0; font-size: 19px; }
+    .quote-source { padding-left: 0; }
+  }
+
+  /* ── PROSE ── */
+  .prose p { margin-bottom: 1.3em; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* ── SEÑORES GRID ── */
+  .senores-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin: 24px 0 36px;
+  }
+  .senor-card {
+    background: var(--ink);
+    padding: 18px 16px;
+    position: relative;
+    transition: border .2s;
+    border-left: 0px solid var(--sienna);
+  }
+  .senor-card:hover { border-left: 3px solid var(--sienna); }
+  .senor-nombre {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .senor-tema {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .senores-grid { grid-template-columns: repeat(2, 1fr); }
+    .info-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-label">El barrio</span>
+  <button class="active" onclick="showPage('autor')">El Autor</button>
+  <button onclick="showPage('obra')">La Obra</button>
+  <button onclick="showPage('metodo')">Poética</button>
+  <button onclick="showPage('premisas')">Premisas A–D</button>
+  <button onclick="showPage('premisas2')">Premisas E–H</button>
+  <button onclick="showPage('maximas')">Máximas</button>
+  <button onclick="showPage('habitantes')">Los Señores</button>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════ PAGE: AUTOR ═══════ -->
+<div class="page visible" id="page-autor">
+  <div class="masthead">
+    <span class="masthead-serie">Ficha de Lectura — Estrategias Creativas</span>
+    <span class="masthead-ficha">Taller de Escritura</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-cat">Ficción filosófica · Portugal · 2002–2010</div>
+      <h1>El barrio</h1>
+      <div class="hero-subtitle">Gonçalo M. Tavares</div>
+      <div class="chips">
+        <span class="chip">10 volúmenes</span>
+        <span class="chip">Publicados 2002–2010</span>
+        <span class="chip">Edición conjunta 2015</span>
+        <span class="chip">Vidas imaginarias</span>
+        <span class="chip">Creación de mundos</span>
+      </div>
+    </div>
+    <div class="hero-ornament">
+      <svg width="180" height="220" viewBox="0 0 180 220" fill="none" xmlns="http://www.w3.org/2000/svg" opacity=".18">
+        <ellipse cx="90" cy="110" rx="75" ry="95" stroke="#9b3a1e" stroke-width="1.5"/>
+        <ellipse cx="90" cy="110" rx="50" ry="70" stroke="#9b3a1e" stroke-width="1"/>
+        <line x1="90" y1="15" x2="90" y2="205" stroke="#9b3a1e" stroke-width="1"/>
+        <line x1="15" y1="110" x2="165" y2="110" stroke="#9b3a1e" stroke-width="1"/>
+        <line x1="26" y1="47" x2="154" y2="173" stroke="#9b3a1e" stroke-width=".8"/>
+        <line x1="154" y1="47" x2="26" y2="173" stroke="#9b3a1e" stroke-width=".8"/>
+        <circle cx="90" cy="110" r="5" stroke="#9b3a1e" stroke-width="1.2"/>
+        <circle cx="90" cy="15" r="3" fill="#9b3a1e" opacity=".5"/>
+        <circle cx="90" cy="205" r="3" fill="#9b3a1e" opacity=".5"/>
+        <circle cx="15" cy="110" r="3" fill="#9b3a1e" opacity=".5"/>
+        <circle cx="165" cy="110" r="3" fill="#9b3a1e" opacity=".5"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-block">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">El barrio es una especie de utopía: un espacio no localizado geográficamente y no definido en el tiempo. Los nombres de los personajes de este barrio son homenajes a escritores, artistas, pero los personajes son meramente ficticios.</p>
+    <p class="quote-source">Gonçalo M. Tavares — Nota del autor, El barrio</p>
+  </div>
+
+  <!-- BIO -->
+  <div class="section-header">
+    <div class="section-tag-line"><span class="section-tag">El Autor</span><span class="section-rule"></span></div>
+    <h2>Gonçalo M. Tavares</h2>
+  </div>
+
+  <div class="bio-grid prose">
+    <div>
+      <p>Gonçalo M. Tavares nació en 1970 en Luanda, Angola, hijo de padres portugueses, y creció en Aveiro, Portugal. Estudió Educación Física en la Universidad Técnica de Lisboa y se doctoró en Ciencias del Movimiento Humano, una formación que marcaría profundamente su literatura: el cuerpo, el espacio, el movimiento y la geometría son categorías que atraviesan toda su obra. Debutó tardíamente como escritor, pero con una velocidad asombrosa: publicó su primer libro en 2001 y en menos de una década había construido uno de los proyectos literarios más ambiciosos y originales de la lengua portuguesa.</p>
+      <p>La crítica internacional lo reconoció con rapidez. El escritor José Saramago, al leer sus primeras obras, declaró que Tavares no tenía derecho a escribir tan bien a los treinta años, y que si continuaba así, <em class="hl">recibiría el Premio Nobel antes de los cuarenta</em>. Ha sido traducido a más de treinta idiomas y ha recibido el Premio Literario de la Unión Europea, el Premio Portugal Telecom de Literatura Brasileira y el Grand Prix de Littérature de l'Académie Française, entre otros. Actualmente es profesor en la Universidad de Lisboa.</p>
+    </div>
+    <div>
+      <p>La obra de Tavares se organiza en series o "enciclopedias" que funcionan como universos paralelos. La más conocida es <em class="hl">El barrio</em>, compuesta por diez libros de ficción breve protagonizados por versiones imaginarias de grandes escritores y pensadores. Pero existe también <em class="hl">El Reino</em>, una tetralogía de novelas largas y sombrías sobre la barbarie histórica del siglo XX; los <em class="hl">Cuadernos de Gwenz</em>, escritura fragmentaria de alta densidad filosófica; y las series de <em class="hl">Aprender a rezar en la Era de la Técnica</em> y <em class="hl">Enciclopedia</em>. Cada proyecto tiene un tono, una escala y una forma completamente distintos.</p>
+      <p>Lo que une todos estos proyectos es la <em class="hl">interrogación sistemática sobre cómo los humanos construyen sistemas para habitar el mundo</em>: la lógica, la ética, la política, el cuerpo, el lenguaje. Tavares no escribe desde la nostalgia ni desde el testimonio autobiográfico: escribe desde la idea. Sus personajes son casi siempre figuras que encarnan un principio filosófico y lo llevan hasta sus consecuencias más absurdas o más perturbadoras.</p>
+    </div>
+  </div>
+
+  <!-- OBRAS -->
+  <div class="section-header">
+    <div class="section-tag-line"><span class="section-tag">Obra seleccionada</span><span class="section-rule"></span></div>
+    <h2>Principales publicaciones</h2>
+  </div>
+  <div class="obras-list">
+    <span class="obra-item">El barrio (serie completa, 2002–2010)</span>
+    <span class="obra-item">Un viaje a la India (2010)</span>
+    <span class="obra-item">Aprender a rezar en la Era de la Técnica (2007)</span>
+    <span class="obra-item">Jerusalem (2004)</span>
+    <span class="obra-item">La máquina de Joseph Walser (2004)</span>
+    <span class="obra-item">Biblioteca (2004)</span>
+    <span class="obra-item">El señor Valéry y la Lógica (2002)</span>
+    <span class="obra-item">Atlas del cuerpo y la imaginación (2013)</span>
+    <span class="obra-item">Investigaciones geométricas (2014)</span>
+    <span class="obra-item">Cantos (2004)</span>
+    <span class="obra-item">Arquitectura, naturaleza y amor (2013)</span>
+  </div>
+
+  <div class="footer">
+    <span>Ficha de Lectura — Estrategias Creativas</span>
+    <span>Gonçalo M. Tavares · El barrio</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ PAGE: OBRA ══════════ -->
+<div class="page" id="page-obra">
+  <div class="masthead">
+    <span class="masthead-serie">Ficha de Lectura — Estrategias Creativas</span>
+    <span class="masthead-ficha">La Obra</span>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag-line"><span class="section-tag">Contexto</span><span class="section-rule"></span></div>
+    <h2>El barrio: estructura y origen</h2>
+  </div>
+
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="info-card-label">Período de escritura</div>
+      <div class="info-card-value">2002–2010 (publicados por separado); edición conjunta 2015</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Género</div>
+      <div class="info-card-value">Ficción filosófica · Microficción · Fábula · Prosa poética numerada</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Estructura</div>
+      <div class="info-card-value">10 volúmenes independientes; cada uno dedicado a un habitante del barrio</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Referentes nominales</div>
+      <div class="info-card-value">Valéry · Michaux · Brecht · Juarroz · Calvino · Kraus · Walser · Breton · Swedenborg · Eliot</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Extensión típica</div>
+      <div class="info-card-value">Piezas de 1–3 páginas agrupadas en volúmenes de 50–150 páginas</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Modo de lectura recomendado</div>
+      <div class="info-card-value">No continuo · Lentitud lectora · Un señor, una pausa</div>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">El barrio de Tavares es multicultural, multilingüístico, y lo habitan escritores de todas las épocas y nacionalidades. Tavares, como escritor, entendió que el estilo no sólo es la forma en la que uno escribe, sino en la que uno vive, come, camina y piensa.</p>
+    <p class="quote-source">Alberto Manguel — «La ciudad de las letras», prólogo de El barrio</p>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag-line"><span class="section-tag">Premisa central</span><span class="section-rule"></span></div>
+    <h2>¿Qué hace Tavares exactamente?</h2>
+  </div>
+
+  <div class="prose">
+    <p>Tavares toma un nombre — Valéry, Brecht, Calvino — y lo usa como <em class="hl">semilla generativa</em>, no como objeto biográfico. Del nombre extrae una lógica de personaje, una obsesión, un sistema de habitar el mundo. El señor Valéry no es Paul Valéry el poeta simbolista: es un hombrecito que salta para parecer más alto y que divide su casa en dos con una línea pintada. La resonancia con el pensador real existe como un eco lejano, no como una obligación de fidelidad.</p>
+    <p>Cada uno de los diez señores tiene una <em class="hl">tónica dominante</em> que organiza todos los textos de su volumen: el señor Valéry encarna la <em class="hl">lógica llevada al absurdo cotidiano</em>; el señor Henri encarna la <em class="hl">enciclopedia etílica y el humor verbal</em>; el señor Brecht las <em class="hl">parábolas políticas de una sola página</em>; el señor Walser la <em class="hl">cortesía del hombre aplastado por las circunstancias</em>; el señor Swedenborg el <em class="hl">pensamiento geométrico-espiritual en forma de proposiciones numeradas</em>; el señor Eliot las <em class="hl">conferencias interminables sobre un solo verso</em>.</p>
+    <p>Lo que hace que el barrio sea habitable — para los personajes y para el lector — no es su geografía sino su <em class="hl">consistencia interna</em>. Cada señor obedece a su propia lógica con una fidelidad casi cómica. Esa fidelidad genera el conflicto, el humor, la filosofía y la emoción. La obra de Tavares propone que la <em class="hl">obsesión es arquitectura</em>: construye espacios, relaciones, y mundos enteros.</p>
+  </div>
+
+  <div class="footer">
+    <span>Ficha de Lectura — Estrategias Creativas</span>
+    <span>Gonçalo M. Tavares · El barrio</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════ PAGE: MÉTODO ══════ -->
+<div class="page" id="page-metodo">
+  <div class="masthead">
+    <span class="masthead-serie">Ficha de Lectura — Estrategias Creativas</span>
+    <span class="masthead-ficha">Poética del autor</span>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag-line"><span class="section-tag">Poética</span><span class="section-rule"></span></div>
+    <h2>Cómo escribe Tavares: principios de construcción</h2>
+  </div>
+
+  <div class="prose">
+    <p>La escritura de Tavares parte de una pregunta que pocas veces se hace explícita: <em class="hl">¿qué pasa si tomamos una idea en serio hasta el final?</em> No a medias, no metafóricamente: hasta el final lógico, hasta el punto donde se vuelve ridícula o perturbadora o hermosa. El señor Valéry toma en serio la simetría del cuerpo y del espacio, y la lleva hasta pintar su casa de dos colores y sus manos de rojo y azul. El señor Kraus toma en serio la retórica del poder y la lleva hasta sus consecuencias más absurdas. Esta técnica — <em class="hl">el reductio ad absurdum como método narrativo</em> — es uno de los pilares de toda la serie.</p>
+
+    <p>Tavares construye sus personajes desde afuera hacia adentro: primero define el <em class="hl">principio de organización del personaje</em> (su sistema, su obsesión, su regla), y luego lo enfrenta al mundo. No hay psicología en el sentido convencional, no hay traumas ni explicaciones causales. La <em class="hl">conducta se deduce de la regla</em>. Esto produce un tipo de personaje que es al mismo tiempo completamente artificial y completamente reconocible: artificial porque nadie realmente piensa que lo derecho debe tocarse con la mano derecha; reconocible porque todos conocemos a alguien que lleva sus principios hasta el absurdo.</p>
+
+    <p>La <em class="hl">forma varía radicalmente entre señores</em>. El señor Valéry habita microficciones con dibujos esquemáticos. El señor Walser protagoniza una novela dividida en capítulos brevísimos con una acumulación absurdista digna de Kafka. El señor Swedenborg escribe proposiciones numeradas, casi teoremas filosóficos. El señor Eliot sostiene conferencias académicas interminables sobre un solo verso. Tavares no tiene un estilo único: tiene la habilidad de habitar el estilo que cada personaje exige. El <em class="hl">contenido dicta la forma</em>, y la forma es en sí misma una declaración sobre quién es ese señor.</p>
+
+    <p>El barrio como espacio compartido funciona como una <em class="hl">utopía de la cohabitación intelectual</em>. Los señores se cruzan en la calle, se visitan, se mencionan. El señor Swedenborg asiste a todas las conferencias del señor Eliot pero aprovecha ese tiempo para sus investigaciones geométricas propias. El señor Borges aparece como el grafitero del barrio. Esa vecindad no produce armonía sino <em class="hl">fricciones productivas</em>: cada habitante vive en su propio sistema y lo impone a todo encuentro, con resultados que oscilan entre el humor y la melancolía.</p>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag-line"><span class="section-tag">Ejes temáticos</span><span class="section-rule"></span></div>
+    <h2>Tres grandes territorios de la obra</h2>
+  </div>
+
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="info-card-label">El cuerpo y la lógica</div>
+      <div class="info-card-value">El cuerpo como máquina de razonamiento. La geometría como emoción. Los gestos cotidianos como filosofía aplicada.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">El poder y el lenguaje</div>
+      <div class="info-card-value">El ridículo del poder político. Las palabras como instrumentos de dominación. La crónica como resistencia.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">El pensamiento como forma de vida</div>
+      <div class="info-card-value">La obsesión como arquitectura del yo. El sistema personal como utopía. La lógica como consuelo y como trampa.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Ficha de Lectura — Estrategias Creativas</span>
+    <span>Gonçalo M. Tavares · El barrio</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════ PAGE: PREMISAS A-D ═ -->
+<div class="page" id="page-premisas">
+  <div class="masthead">
+    <span class="masthead-serie">Ficha de Lectura — Estrategias Creativas</span>
+    <span class="masthead-ficha">Premisas de escritura A–D</span>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag-line"><span class="section-tag">Estrategias creativas</span><span class="section-rule"></span></div>
+    <h2>Premisas derivadas de El barrio</h2>
+  </div>
+
+  <!-- PREMISA A -->
+  <div class="ejercicio-block">
+    <div class="ejercicio-num">Premisa A</div>
+    <div class="ejercicio-titulo"><span class="premisa-letra">A</span>El personaje como sistema: la obsesión como arquitectura</div>
+    <p>Un personaje no es una colección de rasgos psicológicos: es una <em class="hl">lógica interna</em> que se aplica con consistencia implacable a toda situación. El señor Valéry no tiene "personalidad excéntrica" en el sentido convencional: tiene una regla — lo derecho con la mano derecha, lo izquierdo con la izquierda — y todo lo demás se deriva. Sus zapatos, su casa pintada de dos colores, su vida entera. La obsesión genera el conflicto sola: basta poner al personaje en el mundo y el mundo le devuelve problemas.</p>
+    <p><strong>Ejercicio:</strong></p>
+    <ol>
+      <li>Elige una regla o principio que podría gobernar la vida de una persona. Puede ser absurda o perfectamente razonable: "nunca mirar hacia atrás", "siempre llegar primero a cualquier lugar", "no pronunciar nombres propios en voz alta", "solo usar objetos de un único color".</li>
+      <li>No expliques de dónde viene esa regla. No la justifiques psicológicamente. Acéptala como un hecho del personaje.</li>
+      <li>Escribe tres situaciones cotidianas (una conversación, una compra, un momento en la calle) en las que esa regla entra en conflicto con el mundo ordinario.</li>
+      <li>En cada situación, el personaje debe resolver el conflicto aplicando su regla — nunca abandonándola, por incómodo que sea el resultado.</li>
+      <li>Al final, observa: ¿qué revela esa regla sobre cómo ese personaje entiende el mundo? No lo escribas. Déjalo implícito en los gestos.</li>
+    </ol>
+    <div class="ejercicio-nota">El propósito es desplazarse de la caracterización psicológica hacia la caracterización sistémica. Un sistema bien elegido genera comportamiento, conflicto y filosofía sin que el escritor tenga que explicar nada. La coherencia interna del personaje produce su verosimilitud.</div>
+  </div>
+
+  <!-- PREMISA B -->
+  <div class="ejercicio-block">
+    <div class="ejercicio-num">Premisa B</div>
+    <div class="ejercicio-titulo"><span class="premisa-letra">B</span>La vida imaginaria: el nombre ajeno como semilla</div>
+    <p>Tomar el nombre de alguien real — un escritor, un filósofo, un familiar, un vecino — como <em class="hl">punto de partida para inventar, no para retratar</em>. Tavares parte de "Valéry" no como el poeta simbolista, sino como una semilla. Lo que crece es una invención. El nombre aporta una resonancia, un campo de asociaciones que el lector trae sin que el texto tenga que explicarlo. Pero el personaje es completamente libre.</p>
+    <p><strong>Ejercicio:</strong></p>
+    <ol>
+      <li>Elige el nombre de una persona real que te genere una asociación fuerte: un escritor que admires, un pensador, alguien de tu familia, un vecino recordado de la infancia.</li>
+      <li>Escribe ese nombre en una hoja y debajo escribe, sin pensarlo demasiado, tres palabras que ese nombre te evoque. No deben ser datos biográficos: pueden ser colores, objetos, movimientos, sensaciones.</li>
+      <li>A partir de esas tres palabras — ignorando todo lo que sabes de la persona real — inventa un personaje que las habite. Dale un gesto físico característico, una rutina diaria, un objeto que lleva siempre consigo.</li>
+      <li>Escribe una escena breve (una página) en la que ese "señor" o "señora" enfrenta un problema cotidiano menor: perdió algo, llegó tarde, no entiende algo que todos los demás entienden.</li>
+      <li>No menciones nunca a la persona real. El nombre es solo el eco, no la fuente.</li>
+    </ol>
+    <div class="ejercicio-nota">El propósito es liberar al escritor de la responsabilidad biográfica y de la angustia de la invención pura simultáneamente. El nombre real actúa como andamiaje que se retira una vez construido el personaje. Lo que queda es una invención con peso propio.</div>
+  </div>
+
+  <!-- PREMISA C -->
+  <div class="ejercicio-block">
+    <div class="ejercicio-num">Premisa C</div>
+    <div class="ejercicio-titulo"><span class="premisa-letra">C</span>El mundo sin coordenadas: las leyes internas crean el espacio</div>
+    <p>Un mundo de ficción no necesita dirección postal ni época verificable. Necesita <em class="hl">leyes internas consistentes</em>. El barrio de Tavares es "un espacio no localizado geográficamente y no definido en el tiempo": no tiene ciudad, no tiene siglo. Y sin embargo tiene atmósfera, clima, vecindad. Ese clima se construye con repeticiones, rutinas y encuentros — no con referencias históricas o geográficas. La pregunta no es ¿dónde? sino ¿qué reglas gobiernan este lugar?</p>
+    <p><strong>Ejercicio:</strong></p>
+    <ol>
+      <li>Define tres leyes para un mundo que quieras construir. No deben ser leyes físicas extraordinarias (no es ciencia ficción): pueden ser leyes sociales, leyes de comportamiento, convenciones rarísimas pero aceptadas. Por ejemplo: "en este lugar nadie pregunta la hora directamente", o "los objetos perdidos pertenecen a quien los encuentra solo si los encuentra dos veces".</li>
+      <li>Decide qué nunca ocurre en ese mundo. Una ley negativa es tan poderosa como una positiva.</li>
+      <li>Sin describir el mundo explícitamente, escribe una escena de dos personajes que interactúen en él. Las leyes deben sentirse a través de lo que dicen y hacen, no a través de explicaciones del narrador.</li>
+      <li>Al terminar, verifica: ¿podría un lector inferir las tres leyes leyendo la escena? Si no, revisa. Si sí, el mundo existe.</li>
+    </ol>
+    <div class="ejercicio-nota">El propósito es entender que un mundo se construye por sus leyes implícitas, no por su descripciones explícitas. La atmósfera es consecuencia del comportamiento, no de los adjetivos del narrador.</div>
+  </div>
+
+  <!-- PREMISA D -->
+  <div class="ejercicio-block">
+    <div class="ejercicio-num">Premisa D</div>
+    <div class="ejercicio-titulo"><span class="premisa-letra">D</span>El diálogo como espejo: el monólogo disfrazado</div>
+    <p>El señor Breton coloca un espejo en la sala y se entrevista a sí mismo. Las preguntas son suyas. Las respuestas (o el silencio) son suyas. La grabadora registra todo. Esta estructura señala una verdad sobre la escritura: <em class="hl">el diálogo más revelador es el que un personaje sostiene consigo mismo</em>. El otro interlocutor puede ser imaginario, ausente, o literalmente un espejo. Lo que importa es que las preguntas que un personaje se hace — y las que evita — revelan su mundo interior de forma más precisa que cualquier descripción psicológica.</p>
+    <p><strong>Ejercicio:</strong></p>
+    <ol>
+      <li>Elige un personaje que ya tengas o inventa uno nuevo. Decide qué cosa no puede admitirse a sí mismo: un miedo, un deseo, un fracaso, una convicción que no se atreve a sostener.</li>
+      <li>Escribe una entrevista en la que el personaje es a la vez el entrevistador y el entrevistado. Puede hablar frente a un espejo, ante una grabadora, o en un interrogatorio mental al despertar.</li>
+      <li>Las preguntas deben acercarse a lo que no puede decirse, pero nunca llegar del todo. El entrevistador debe interrumpirse, cambiar de tema, reformular para evitar la respuesta verdadera.</li>
+      <li>Incluye al menos una pregunta que el personaje no responde. Ese silencio es la información más valiosa del texto.</li>
+      <li>El texto no debe superar dos páginas. La concentración es parte del ejercicio.</li>
+    </ol>
+    <div class="ejercicio-nota">El propósito es trabajar la revelación oblicua del personaje: lo que no se dice define tanto como lo que se dice. La entrevista imposible es un formato que obliga a mostrar la distancia entre lo que el personaje piensa que es y lo que realmente es.</div>
+  </div>
+
+  <div class="footer">
+    <span>Ficha de Lectura — Estrategias Creativas</span>
+    <span>Gonçalo M. Tavares · El barrio</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════ PAGE: PREMISAS E-H ═ -->
+<div class="page" id="page-premisas2">
+  <div class="masthead">
+    <span class="masthead-serie">Ficha de Lectura — Estrategias Creativas</span>
+    <span class="masthead-ficha">Premisas de escritura E–H</span>
+  </div>
+
+  <!-- PREMISA E -->
+  <div class="ejercicio-block">
+    <div class="ejercicio-num">Premisa E</div>
+    <div class="ejercicio-titulo"><span class="premisa-letra">E</span>La fábula política: la lógica llevada hasta su consecuencia más honesta</div>
+    <p>El señor Brecht y el señor Kraus escriben historias de una o dos páginas que funcionan como <em class="hl">microscopios del poder</em>. El Jefe que se suena la nariz con el mapa del país. El Jefe fascinado con el índice del informe económico, sin leer nunca el contenido. El desempleado que acepta que le corten primero una mano, luego la otra. Cada historia parte de un mecanismo de poder real y lo lleva hasta el punto donde se vuelve atroz o ridículo. <em class="hl">No hay exageración: hay honestidad implacable.</em></p>
+    <p><strong>Ejercicio:</strong></p>
+    <ol>
+      <li>Identifica un mecanismo de poder que conozcas de cerca: una institución, una jerarquía laboral, una norma social, una ley, una costumbre. No tiene que ser político en el sentido grande: puede ser doméstico, escolar, vecinal.</li>
+      <li>Formula en una frase la lógica de ese mecanismo. Por ejemplo: "Para conseguir el trabajo debes demostrar que no lo necesitas". O: "La regla existe para proteger a quienes tienen el poder de no aplicarla".</li>
+      <li>Escribe una historia brevísima (media página a una página) que dramatice esa lógica con personajes sin nombres propios: El Jefe, El Auxiliar, El Solicitante, La Institución. Lleva la lógica hasta su consecuencia final sin irte por las ramas.</li>
+      <li>No escribas la moraleja. Si tu historia necesita una conclusión explicada, la historia no está terminada todavía.</li>
+      <li>Relee y pregúntate: ¿exageré? Si la respuesta es "no, esto realmente pasa", el texto funciona.</li>
+    </ol>
+    <div class="ejercicio-nota">El propósito es ejercitar la mirada política de la ficción: la capacidad de ver cómo los sistemas de poder se reproducen en lo cotidiano y de encontrar la forma narrativa más eficiente para mostrar ese mecanismo sin explicarlo.</div>
+  </div>
+
+  <!-- PREMISA F -->
+  <div class="ejercicio-block">
+    <div class="ejercicio-num">Premisa F</div>
+    <div class="ejercicio-titulo"><span class="premisa-letra">F</span>El pensamiento en forma de lista: la prosa numerada como poema</div>
+    <p>El señor Swedenborg escribe proposiciones numeradas: <em>1. Todos los ángulos son deseo. 2. Es posible cerrar el deseo. 3. Pero el deseo sólo se cierra temporalmente.</em> Numerar fragmentos no es ordenar ideas: es crear pausas, imponer ritmo, y dejar que el <em class="hl">vacío entre los números hable</em>. La forma produce la ilusión de un argumento, pero lo que avanza no es una demostración sino una acumulación de imágenes abstractas. El pensamiento se vuelve poema.</p>
+    <p><strong>Ejercicio:</strong></p>
+    <ol>
+      <li>Elige una abstracción que te interese: el miedo, la espera, la gratitud, la distancia, el silencio. No elijas algo que ya sabes cómo definir: elige algo que te resulte resbaladizo.</li>
+      <li>Escribe 10 proposiciones numeradas sobre esa abstracción. Cada proposición debe tener entre 5 y 20 palabras. No pueden ser definiciones de diccionario. Deben ser imágenes, relaciones, paradojas, preguntas.</li>
+      <li>Las proposiciones pueden ser contradictorias entre sí. Pueden avanzar y retroceder. Pueden dejar frases incompletas si el punto de suspensión es más honesto que la conclusión.</li>
+      <li>Lee el resultado en voz alta. Si suena como un poema con forma de argumento, está bien. Si suena como un argumento con forma de poema, también.</li>
+      <li>Opcional: convierte la lista en un "texto sobre el oficio de un escritor" siguiendo el modelo de Swedenborg. Sustituye la abstracción elegida por "la escritura" y revisa cada proposición.</li>
+    </ol>
+    <div class="ejercicio-nota">El propósito es trabajar el ritmo del pensamiento como forma literaria: la numeración crea una arquitectura que permite fragmentos que serían demasiado breves en prosa continua. El número le da peso a la brevedad.</div>
+  </div>
+
+  <!-- PREMISA G -->
+  <div class="ejercicio-block">
+    <div class="ejercicio-num">Premisa G</div>
+    <div class="ejercicio-titulo"><span class="premisa-letra">G</span>El estilo como modo de habitar el mundo</div>
+    <p>Alberto Manguel lo señala en el prólogo: Tavares entendió que <em class="hl">el estilo determina la vida entera de un personaje</em>, no solo cómo escribe. El señor Valéry no puede usar la mano equivocada porque su estilo es la simetría absoluta. El señor Calvino prueba las sillas antes de sentarse porque su estilo es la cortesía metódica y verificable. El estilo no se declara: se <em class="hl">muestra en los gestos cotidianos</em> — cómo se ordena una biblioteca, cómo se despide alguien, cómo se resuelve un problema pequeño.</p>
+    <p><strong>Ejercicio:</strong></p>
+    <ol>
+      <li>Antes de escribir sobre un personaje, responde por escrito estas cinco preguntas: ¿Cómo ordena sus libros o sus cosas (por tamaño, por color, por afecto, sin orden aparente)? ¿Qué hace cuando no sabe dónde poner un objeto? ¿Cómo se despide de alguien que no volverá a ver? ¿Qué hace en los primeros cinco minutos después de despertar? ¿Cómo reacciona cuando algo no sale como esperaba?</li>
+      <li>Las respuestas no deben aparecer en el texto final. Son el andamiaje.</li>
+      <li>Ahora escribe una escena en la que ese personaje realiza una acción completamente cotidiana: preparar algo de comer, esperar en una fila, buscar un objeto perdido. No describas su interior. Solo muestra cómo hace lo que hace.</li>
+      <li>Al terminar, pide a alguien que lea la escena y te diga qué tres adjetivos le parecen que definen al personaje. Si coinciden con lo que tú querías, el estilo está ahí.</li>
+    </ol>
+    <div class="ejercicio-nota">El propósito es entender que la caracterización más poderosa es la que no se nombra. Un lector que infiere el carácter de un personaje a través de sus gestos ha construido ese personaje junto con el escritor. Esa co-construcción produce identificación.</div>
+  </div>
+
+  <!-- PREMISA H -->
+  <div class="ejercicio-block">
+    <div class="ejercicio-num">Premisa H</div>
+    <div class="ejercicio-titulo"><span class="premisa-letra">H</span>La vecindad como fricción: construir un mundo desde sus colisiones</div>
+    <p>El barrio funciona narrativamente no por la armonía de sus habitantes sino por sus <em class="hl">fricciones productivas</em>. El señor Swedenborg asiste a todas las conferencias del señor Eliot pero usa ese tiempo para sus propias investigaciones geométricas. El señor Michaux y el señor Juarroz tienen "curiosas conversaciones en torno a la naturaleza del lenguaje". Cada habitante vive en su propio sistema cerrado y, al entrar en contacto con otro sistema, se produce un cortocircuito que revela a ambos. <em class="hl">Un mundo se define por cómo sus habitantes se rozan entre sí.</em></p>
+    <p><strong>Ejercicio:</strong></p>
+    <ol>
+      <li>Crea dos personajes usando la Premisa A: cada uno con su propia regla o sistema de habitar el mundo. Las reglas deben ser incompatibles entre sí — no opuestas dramáticamente, sino simplemente distintas, como dos idiomas que no tienen traducción directa.</li>
+      <li>Escribe una escena en la que ambos personajes necesitan resolver juntos un problema práctico muy sencillo: encontrar una mesa en un restaurante lleno, decidir qué camino tomar, repartir algo entre los dos.</li>
+      <li>Cada uno aplica su sistema. Ninguno cede. La situación debe resolverse de alguna manera, pero sin que ninguno abandone su lógica. La resolución puede ser ridícula, melancólica o inesperadamente poética.</li>
+      <li>No escribas lo que cada personaje piensa del otro. Solo muestra cómo actúan en la fricción.</li>
+      <li>Al final, pregúntate: ¿qué aprendimos de cada personaje que no hubiéramos aprendido si hubiera estado solo en su escena?</li>
+    </ol>
+    <div class="ejercicio-nota">El propósito es explorar cómo el encuentro entre dos sistemas distintos es la unidad mínima de un mundo. Un personaje solo revela su sistema. Dos personajes con sistemas distintos revelan el mundo que habitan juntos.</div>
+  </div>
+
+  <div class="footer">
+    <span>Ficha de Lectura — Estrategias Creativas</span>
+    <span>Gonçalo M. Tavares · El barrio</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════ PAGE: MÁXIMAS ══════ -->
+<div class="page" id="page-maximas">
+  <div class="masthead">
+    <span class="masthead-serie">Ficha de Lectura — Estrategias Creativas</span>
+    <span class="masthead-ficha">Máximas y principios</span>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag-line"><span class="section-tag">Máximas</span><span class="section-rule"></span></div>
+    <h2>Principios de escritura extraídos de El barrio</h2>
+  </div>
+
+  <div class="maximas">
+    <div class="maxima-row">
+      <span class="maxima-num">01</span>
+      <span class="maxima-text">La escritura no tiene un itinerario uniforme: el punto surge antes de la primera letra de la primera frase.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">02</span>
+      <span class="maxima-text">El estilo no es la forma en que uno escribe: es la forma en que uno vive, come, camina y piensa. El estilo es una habitación.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">03</span>
+      <span class="maxima-text">Hay palabras que trabajan y hay palabras perezosas. La pereza de una palabra no es su inmovilidad: es su incapacidad de mover a quien lee.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">04</span>
+      <span class="maxima-text">Un verso fuerte no tiene currículum: surge de cero, existe durante el instante en que se lee, y después desaparece sin dejar historia detrás.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">05</span>
+      <span class="maxima-text">Hay versos que comienzan en la última palabra. El verso que empieza en su primera palabra es, a menudo, el más débil.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">06</span>
+      <span class="maxima-text">La ficción no puede faltar a la verdad: incluso cuando las historias son imaginadas, los personajes deben ser reales.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">07</span>
+      <span class="maxima-text">Un mundo ficticio no necesita coordenadas geográficas ni históricas: necesita leyes internas que sus habitantes obedezcan sin que nadie las explique.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">08</span>
+      <span class="maxima-text">La imaginación es el movimiento de las líneas. Un cuadrado que baila es más interesante que un cuadrado.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">09</span>
+      <span class="maxima-text">Son las preguntas las que complican la realidad. Sin preguntas la realidad sería simple — pero entonces tampoco habría literatura.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">10</span>
+      <span class="maxima-text">La forma sin ideas no cambia. Las ideas son ayudantes del tiempo. La forma que no cambia envejece.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">11</span>
+      <span class="maxima-text">Escribir no es un trabajo manual para quien sabe leer: es la traducción de imágenes mentales que existen a mayor profundidad que los huesos.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">12</span>
+      <span class="maxima-text">La geografía de la imaginación es generosa y siempre tiene espacio para un sitio más. Fundar países imaginarios es parte del trabajo del narrador.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">13</span>
+      <span class="maxima-text">Entre la claridad excesiva y la oscuridad total, hay una proporción ideal para que un texto mantenga su ligazón con los lectores.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">14</span>
+      <span class="maxima-text">Dejar algún vacío en las líneas del cuadrado: los rincones vacíos son para que el futuro entre, como si el futuro usara zapatos.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">15</span>
+      <span class="maxima-text">Modificar una forma es inscribir en ella un nuevo centro. La imaginación crea nuevos centros. Prestar atención al nuevo centro es crear una nueva forma.</span>
+    </div>
+    <div class="maxima-row">
+      <span class="maxima-num">16</span>
+      <span class="maxima-text">El mundo, desde que nació, busca su última forma. Como todavía no la ha encontrado, todavía no ha muerto. De ahí que la escritura siempre tenga algo que decir.</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Ficha de Lectura — Estrategias Creativas</span>
+    <span>Gonçalo M. Tavares · El barrio</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════ PAGE: HABITANTES ═══ -->
+<div class="page" id="page-habitantes">
+  <div class="masthead">
+    <span class="masthead-serie">Ficha de Lectura — Estrategias Creativas</span>
+    <span class="masthead-ficha">Los habitantes del barrio</span>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag-line"><span class="section-tag">Referencias literarias</span><span class="section-rule"></span></div>
+    <h2>Los diez señores: referentes e invenciones</h2>
+  </div>
+
+  <div class="senores-grid">
+    <div class="senor-card">
+      <div class="senor-nombre">El señor Valéry</div>
+      <div class="senor-tema">La Lógica</div>
+    </div>
+    <div class="senor-card">
+      <div class="senor-nombre">El señor Henri</div>
+      <div class="senor-tema">La Enciclopedia</div>
+    </div>
+    <div class="senor-card">
+      <div class="senor-nombre">El señor Brecht</div>
+      <div class="senor-tema">El Éxito</div>
+    </div>
+    <div class="senor-card">
+      <div class="senor-nombre">El señor Juarroz</div>
+      <div class="senor-tema">El Pensamiento</div>
+    </div>
+    <div class="senor-card">
+      <div class="senor-nombre">El señor Calvino</div>
+      <div class="senor-tema">El Paseo</div>
+    </div>
+    <div class="senor-card">
+      <div class="senor-nombre">El señor Kraus</div>
+      <div class="senor-tema">La Política</div>
+    </div>
+    <div class="senor-card">
+      <div class="senor-nombre">El señor Walser</div>
+      <div class="senor-tema">El Bosque</div>
+    </div>
+    <div class="senor-card">
+      <div class="senor-nombre">El señor Breton</div>
+      <div class="senor-tema">La Entrevista</div>
+    </div>
+    <div class="senor-card">
+      <div class="senor-nombre">El señor Swedenborg</div>
+      <div class="senor-tema">Las Investigaciones Geométricas</div>
+    </div>
+    <div class="senor-card">
+      <div class="senor-nombre">El señor Eliot</div>
+      <div class="senor-tema">Las Conferencias</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <div class="section-tag-line"><span class="section-tag">Referentes reales</span><span class="section-rule"></span></div>
+    <h2>Los escritores que prestan el nombre</h2>
+  </div>
+
+  <div class="refs">
+    <div class="ref-item">
+      <div class="ref-bullet"></div>
+      <div>
+        <div class="ref-title">Paul Valéry (1871–1945)</div>
+        <div class="ref-author">Poeta y ensayista francés</div>
+        <div class="ref-nota">Autor de El cementerio marino y los Cuadernos. Conocido por su rigor intelectual y su fascinación por la lógica, la geometría del pensamiento y la perfección formal. Tavares toma su apellido para construir un personaje obsesionado con la simetría y la consistencia lógica en lo más cotidiano.</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-bullet"></div>
+      <div>
+        <div class="ref-title">Henri Michaux (1899–1984)</div>
+        <div class="ref-author">Poeta y pintor belga-francés</div>
+        <div class="ref-nota">Explorador de los estados alterados de consciencia, autor de Un bárbaro en Asia y Miserable milagro. Su interés por las drogas como expansores de la percepción resuena en el señor Henri y su amor inagotable por la absenta como catalizador de pensamiento y discurso enciclopédico.</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-bullet"></div>
+      <div>
+        <div class="ref-title">Bertolt Brecht (1898–1956)</div>
+        <div class="ref-author">Dramaturgo y poeta alemán</div>
+        <div class="ref-nota">Creador del teatro épico y del distanciamiento (Verfremdungseffekt). Sus obras analizan las estructuras de poder con humor feroz y precisión política. El señor Brecht de Tavares hereda la fábula política y la parábola breve, contando historias absurdas y crueles sobre el poder en apenas una página.</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-bullet"></div>
+      <div>
+        <div class="ref-title">Roberto Juarroz (1925–1995)</div>
+        <div class="ref-author">Poeta argentino</div>
+        <div class="ref-nota">Autor de la Poesía vertical, una de las obras líricas más radicales del siglo XX en lengua castellana. Su escritura explora las paradojas del ser y la nada, el pensamiento y la imposibilidad del pensamiento. El señor Juarroz de Tavares vive en el límite entre pensar y ver, entre existir y no poder existir simultáneamente.</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-bullet"></div>
+      <div>
+        <div class="ref-title">Italo Calvino (1923–1985)</div>
+        <div class="ref-author">Narrador y ensayista italiano</div>
+        <div class="ref-nota">Autor de Las ciudades invisibles, Si una noche de invierno un viajero y Seis propuestas para el próximo milenio. Su paseo en Tavares es una larga novela kafkiana sobre la hospitalidad, la cortesía y el colapso silencioso de un orden doméstico. El señor Calvino lleva al extremo la gentileza metódica y verificable que caracteriza al escritor real.</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-bullet"></div>
+      <div>
+        <div class="ref-title">Karl Kraus (1874–1936)</div>
+        <div class="ref-author">Escritor y periodista austríaco</div>
+        <div class="ref-nota">Fundador de Die Fackel, una de las revistas de crítica cultural más influyentes del siglo XX. Satirizó con ferocidad la hipocresía de la prensa, la política y el lenguaje de su época. El señor Kraus es el cronista político del barrio: sus textos son parábolas brevísimas sobre el poder, el lenguaje y la estupidez institucionalizada.</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-bullet"></div>
+      <div>
+        <div class="ref-title">Robert Walser (1878–1956)</div>
+        <div class="ref-author">Narrador suizo en lengua alemana</div>
+        <div class="ref-nota">Autor de El paseo, Jakob von Gunten y El ayudante. Escribió con una prosa de extrema delicadeza sobre la pequeñez voluntaria, la marginalidad y la dignidad de lo humilde. Vivió los últimos 27 años de su vida en instituciones psiquiátricas. El señor Walser de Tavares es el más patético y entrañable: un hombre que ve su casa nueva ser desmontada por operarios mientras él observa con educación infinita.</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-bullet"></div>
+      <div>
+        <div class="ref-title">André Breton (1896–1966)</div>
+        <div class="ref-author">Poeta y teórico francés, fundador del surrealismo</div>
+        <div class="ref-nota">Autor del Manifiesto surrealista y Nadja. Defensor de la escritura automática y de la imagen poética como choque entre realidades distantes. El señor Breton de Tavares escenifica la entrevista consigo mismo — el monólogo disfrazado de diálogo — como un homenaje irónico a la búsqueda surrealista del otro interior.</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-bullet"></div>
+      <div>
+        <div class="ref-title">Emanuel Swedenborg (1688–1772)</div>
+        <div class="ref-author">Científico, teólogo y místico sueco</div>
+        <div class="ref-nota">Uno de los científicos más notables de su época antes de convertirse en visionario religioso: afirmaba comunicarse con ángeles y espíritus. Su obra combina rigor científico y éxtasis místico. El señor Swedenborg de Tavares convierte esa síntesis en un método de escritura: proposiciones numeradas que tienen la forma de teoremas pero el contenido de visiones.</div>
+      </div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-bullet"></div>
+      <div>
+        <div class="ref-title">T. S. Eliot (1888–1965)</div>
+        <div class="ref-author">Poeta y ensayista anglonorteamericano</div>
+        <div class="ref-nota">Autor de La tierra baldía y los Cuatro cuartetos, Premio Nobel de Literatura 1948. Ensayista riguroso y conferenciante prolífico. El señor Eliot de Tavares dicta conferencias interminables sobre un único verso de otro poeta, desplegando páginas de razonamiento minucioso sobre cuestiones como si el día crece o no crece. Una meditación sobre el exceso académico y sobre la belleza del análisis en sí mismo.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Ficha de Lectura — Estrategias Creativas</span>
+    <span>Gonçalo M. Tavares · El barrio</span>
+  </div>
+</div>
+
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
+    document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('visible');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
